@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zzb.grade.mapper.GradeMapper">
+    <resultMap id="BaseResultMap" type="cn.zzb.grade.entity.Grade">
+        <id column="zzb_sno" property="sno" jdbcType="VARCHAR"/>
+        <id column="zzb_offerid" property="offerId" jdbcType="INTEGER"/>
+        <result column="zzb_score" property="score" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <resultMap id="StudentGradeView" type="cn.zzb.grade.entity.StudentGradeView">
+        <result column="zzb_Sno" property="sno" jdbcType="VARCHAR"/>
+        <result column="zzb_Sname" property="sname" jdbcType="VARCHAR"/>
+        <result column="zzb_Cname" property="cname" jdbcType="VARCHAR"/>
+        <result column="zzb_Term" property="term" jdbcType="VARCHAR"/>
+        <result column="zzb_Score" property="score" jdbcType="DOUBLE"/>
+        <result column="zzb_Tname" property="tname" jdbcType="VARCHAR"/>
+        <result column="zzb_ClassName" property="className" jdbcType="VARCHAR"/>
+        <result column="zzb_Credit" property="credit" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="SelectedCourseView" type="cn.zzb.grade.entity.SelectedCourseView">
+        <result property="offerId" column="zzb_OfferID"/>
+        <result property="sno" column="zzb_Sno"/>
+        <result property="cno" column="zzb_Cno"/>
+        <result property="cname" column="zzb_Cname"/>
+        <result property="term" column="zzb_Term"/>
+        <result property="tname" column="zzb_Tname"/>
+        <result property="credit" column="zzb_Credit"/>
+        <result property="score" column="zzb_score"/>
+    </resultMap>
+
+    <select id="selectStudentGradeView" resultMap="StudentGradeView">
+        SELECT * FROM v_StudentGrade
+    </select>
+    <select id="selectSelectedCourses" resultMap="SelectedCourseView">
+        SELECT * FROM v_SelectedCourses
+    </select>
+</mapper>

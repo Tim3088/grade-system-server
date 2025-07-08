@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zzb.grade.mapper.RegionMapper">
+    <resultMap id="BaseResultMap" type="cn.zzb.grade.entity.Region">
+        <id column="zzb_regionId" property="regionId" jdbcType="VARCHAR"/>
+        <result column="zzb_regionName" property="regionName" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

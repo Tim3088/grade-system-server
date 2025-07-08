@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zzb.grade.mapper.CourseOfferMapper">
+    <resultMap id="BaseResultMap" type="cn.zzb.grade.entity.CourseOffer">
+        <id column="zzb_OfferID" property="offerId" jdbcType="INTEGER"/>
+        <result column="zzb_Cno" property="cno" jdbcType="VARCHAR"/>
+        <result column="zzb_Tno" property="tno" jdbcType="VARCHAR"/>
+        <result column="zzb_ClassID" property="classId" jdbcType="VARCHAR"/>
+        <result column="zzb_Term" property="term" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="TeacherCourseView" type="cn.zzb.grade.entity.TeacherCourseView">
+        <id column="zzb_offerid" property="offerId" jdbcType="INTEGER"/>
+        <result column="zzb_tno" property="tno" jdbcType="VARCHAR"/>
+        <result column="zzb_tname" property="tname" jdbcType="VARCHAR"/>
+        <result column="zzb_cno" property="cno" jdbcType="VARCHAR"/>
+        <result column="zzb_cname" property="cname" jdbcType="VARCHAR"/>
+        <result column="zzb_term" property="term" jdbcType="VARCHAR"/>
+        <result column="zzb_classname" property="className" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="AvailableCourseView" type="cn.zzb.grade.entity.AvailableCourseView">
+        <result column="zzb_OfferID" property="offerId" jdbcType="INTEGER"/>
+        <result column="zzb_ClassID" property="classId" jdbcType="INTEGER"/>
+        <result column="zzb_Cno" property="cno" jdbcType="VARCHAR"/>
+        <result column="zzb_Cname" property="cname" jdbcType="VARCHAR"/>
+        <result column="zzb_Hours" property="hours" jdbcType="INTEGER"/>
+        <result column="zzb_Type" property="type" jdbcType="VARCHAR"/>
+        <result column="zzb_Credit" property="credit" jdbcType="INTEGER"/>
+        <result column="zzb_tname" property="tname" jdbcType="VARCHAR"/>
+        <result column="zzb_term" property="term" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectListByTeacherId" resultMap="BaseResultMap">
+        SELECT * FROM zhengzb_CourseOffer WHERE zzb_Tno = #{userId}
+    </select>
+    <select id="selectTeacherCourseView" resultMap="TeacherCourseView">
+        SELECT * FROM v_TeacherCourse
+    </select>
+    <select id="selectAvailableCourses" resultMap="AvailableCourseView">
+        SELECT * FROM v_AvailableCourses
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zzb.grade.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="cn.zzb.grade.entity.Student">
+        <id column="zzb_Sno" property="sno" jdbcType="VARCHAR"/>
+        <result column="zzb_Sname" property="name" jdbcType="VARCHAR"/>
+        <result column="zzb_Sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="zzb_Age" property="age" jdbcType="VARCHAR"/>
+        <result column="zzb_RegionID" property="regionId" jdbcType="VARCHAR"/>
+        <result column="zzb_CreditTotal" property="creditTotal" jdbcType="VARCHAR"/>
+        <result column="zzb_ClassID" property="classId" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insertStudent" parameterType="map" statementType="CALLABLE">
+        {call insert_student(
+                #{sno,jdbcType=VARCHAR},
+                #{sname,jdbcType=VARCHAR},
+                #{sex,jdbcType=CHAR},
+                #{age,jdbcType=INTEGER},
+                #{regionId,jdbcType=INTEGER},
+                #{classId,jdbcType=INTEGER}
+              )}
+    </insert>
+
+    <update id="updateByOldId">
+        UPDATE zhengzb_student
+        SET zzb_sno = #{newUserId}, zzb_sname = #{userName}
+        WHERE zzb_sno = #{oldUserId}
+    </update>
+
+    <update id="updateStudent" parameterType="map" statementType="CALLABLE">
+        {call update_student(
+            #{sno,jdbcType=VARCHAR},
+            #{sname,jdbcType=VARCHAR},
+            #{sex,jdbcType=CHAR},
+            #{age,jdbcType=INTEGER},
+            #{regionId,jdbcType=INTEGER},
+            #{classId,jdbcType=INTEGER}
+        )}
+    </update>
+
+</mapper>

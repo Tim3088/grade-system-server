@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zzb.grade.mapper.TeacherMapper">
+    <resultMap id="BaseResultMap" type="cn.zzb.grade.entity.Teacher">
+        <id column="zzb_Tno" property="tno" jdbcType="VARCHAR"/>
+        <result column="zzb_Tname" property="name" jdbcType="VARCHAR"/>
+        <result column="zzb_Tsex" property="sex" jdbcType="VARCHAR"/>
+        <result column="zzb_Tage" property="age" jdbcType="VARCHAR"/>
+        <result column="zzb_Title" property="title" jdbcType="VARCHAR"/>
+        <result column="zzb_Phone" property="phone" jdbcType="VARCHAR"/>
+    </resultMap>
+    <update id="updateByOldId">
+        UPDATE zhengzb_teacher
+        SET zzb_tno = #{newUserId}, zzb_tname = #{userName}
+        WHERE zzb_tno = #{oldUserId}
+    </update>
+</mapper>
